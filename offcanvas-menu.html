@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offcanvas With Animated Icons</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+    }
+
+    /* ---------------------- */
+    /* ANIMATED HAMBURGER ICON */
+    /* ---------------------- */
+    .menu-btn {
+      width: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 9999;
+    }
+    .menu-btn span {
+      display: block;
+      height: 4px;
+      margin: 6px 0;
+      background: #fff;
+      border-radius: 5px;
+      transition: 0.4s ease;
+    }
+    .menu-btn.active .line1 {
+      transform: translateY(10px) rotate(45deg);
+    }
+    .menu-btn.active .line2 {
+      opacity: 0;
+    }
+    .menu-btn.active .line3 {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+
+    /* ---------------------- */
+    /* OFFCANVAS STYLING */
+    /* ---------------------- */
+    .offcanvas {
+      background: #0e0e0e;
+      padding: 25px;
+    }
+
+    /* animated icons inside offcanvas */
+    .icon-link {
+      font-size: 40px;
+      margin: 15px 0;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      transition: 0.3s ease-in-out;
+    }
+
+    .icon-link i {
+      transition: 0.3s ease-in-out;
+    }
+
+    .icon-link:hover {
+      color: #0d6efd;
+      transform: translateX(10px);
+    }
+
+    .icon-link:hover i {
+      transform: scale(1.25) rotate(10deg);
+    }
+
+    /* close icon animation */
+    .close-ico {
+      font-size: 45px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .close-ico:hover {
+      color: red;
+      transform: rotate(90deg) scale(1.2);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-dark bg-dark px-3">
+    <a class="navbar-brand" href="#">AkhilText</a>
+
+    <!-- Animated Menu Button -->
+    <div class="menu-btn"
+         data-bs-toggle="offcanvas"
+         data-bs-target="#myCanvas"
+         onclick="this.classList.toggle('active')">
+      <span class="line1"></span>
+      <span class="line2"></span>
+      <span class="line3"></span>
+    </div>
+  </nav>
+
+  <!-- OFFCANVAS -->
+  <div class="offcanvas offcanvas-end" id="myCanvas">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="m-0">Menu</h4>
+      
+      <!-- Animated Close Icon -->
+      <i class="bi bi-x close-ico"
+         data-bs-dismiss="offcanvas"
+         onclick="document.querySelector('.menu-btn').classList.remove('active')">
+      </i>
+    </div>
+
+    <!-- Two Animated Icons -->
+    <a href="#" class="icon-link">
+      <i class="bi bi-house"></i> Home
+    </a>
+
+    <a href="#" class="icon-link">
+      <i class="bi bi-gear"></i> Settings
+    </a>
+
+    <a href="#" class="icon-link">
+      <i class="bi bi-person"></i> Profile
+    </a>
+
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener("hidden.bs.offcanvas", () => {
+      document.querySelector(".menu-btn").classList.remove("active");
+    });
+  </script>
+
+</body>
+</html>
