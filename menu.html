@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.hamburger {
+  width: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hamburger span {
+  display: block;
+  height: 4px;
+  margin: 7px 0;
+  background: #ff3e3e;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+.hamburger.active span:nth-child(2) {
+  transform: scale(0);
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+</style>
+</head>
+<body>
+
+<div class="hamburger" onclick="this.classList.toggle('active')">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+</body>
+</html>
